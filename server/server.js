@@ -1,5 +1,7 @@
 const express = require('express')
 const app = express()
+const questions=require('./db')
+const{Client} = require('pg')
 //Cross-origin resource sharing (CORS)
 const cors = require('cors')
 //cors enabled for localhost:3000
@@ -8,6 +10,7 @@ const cors = require('cors')
 }*/
 //required to use python script
 const { spawn } = require('child_process');
+const { question1 } = require('./db')
 
 //CORS enabled for all origins
 app.use(cors());
@@ -20,21 +23,51 @@ app.get('/api', (req, res) => {
 app.get('/home', (req, res) => {
     res.json({ "string": "Hello World", "number": "one" })
 });
+// get data from db.js
+app.get('/questions',(req,res)=>{
+    res.json(questions)
+});
+//get question1 from db
+app.get('/questions/question1',(req,res)=>{
+    res.json(questions.question1)
+});
+//get question2 from db
+app.get('/questions/question2',(req,res)=>{
+    res.json(questions.question2)
+});
+//get question3 from db
+app.get('/questions/question3',(req,res)=>{
+    res.json(questions.question3)
+});
 //cors as middleware
 app.post('/data',/*cors(corsOptions),*/(req, res) => {
-    console.log(req.body)
-    var num1 = req.body.num1;
-    console.log(num1);
-    var num2 = req.body.num2;
-    console.log(num2);
-    //call python script
-    const python = spawn('python', ['testscript1.py', num1, num2]);
+    console.log(req.body);
+    let answers = req.body;
+
+    const python = spawn('python3', ['algorithm.py', answers[0], answers[1], answers[2]]);
+
     python.stdout.on('data', function (data) {
         dataToSend = data.toString();
         console.log(dataToSend);
-        res.json({ "sum": dataToSend });
+        res.json({ dataToSend });
     });
-
 })
 
-app.listen(3002, () => { console.log("Server started on port 3002") })
+/*const client = new Client({
+    host:"localhost",
+    user:"postgres",
+    port: 5432,
+    password:"loki2345",
+    database:"postgres"
+})
+client.connect();
+client.query(`SELECT * FROM users`,(err,res)=>{
+    if(!err){
+        console.log(res.rows)
+    } else{
+        console.log(err.message);
+    }
+    client.end;
+})
+*/
+app.listen(3001, () => { console.log("Server started on port 5000") })
