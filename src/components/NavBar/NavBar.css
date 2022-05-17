@@ -1,5 +1,5 @@
 .navBar {
-    width: 100%;
+    
     background-color: transparent;
     height: 50px;
     display: flex;
@@ -85,3 +85,5 @@ span{
     font-size: 30px;
     margin-left: 10px;
 }
+
+

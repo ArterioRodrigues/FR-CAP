@@ -4,10 +4,10 @@ import {BrowserRouter as Router, Routes, Route, Link, useNavigate} from 'react-r
 import react, {useState, useEffect} from "react"
 import axios from "axios";
 import "./App.css";
-import { useReducer } from 'react/cjs/react.production.min';
-import Nav from './components/NavBar/NavBar'
-import Analytics from './components/Analytics/Analytics'
+import Searchbar from './components/Search/Searchbar'
+import Search from './components/Search/Search'
 import Workout from './pages/Workout/Workout';
+import Nav from './components/NavBar/NavBar'
 
 export default function App() {
   
@@ -60,7 +60,9 @@ export default function App() {
     <div>
         <Routes>
           <Route path="/Workout" element ={<Workout/>}/>
-          <Route path="/Analytics" element={<Analytics/>}/>
+          <Route path="/Search" element={<Search/>}/>
+          <Route path="/Nav" element={<Nav/>}/>
+          <Route path="/Searchbar" element={<Searchbar/>}/>
           <Route path="/Home" element={<Home serverData = {serverData}/>}/>
           <Route path="/" element={<Quiz questions = {questions} handleClick={handleClick}/>}/>
         </Routes>

@@ -1,8 +1,9 @@
 import Suggestions from '../../components/Suggestions/Suggestions'
 import react, {useState, useEffect} from "react"
-import Nav from '../../components/NavBar/NavBar'
+import Searchbar from '../../components/Search/Searchbar'
 import Analytics from '../../components/Analytics/Analytics'
 import './Home.css'
+import Nav from '../../components/NavBar/NavBar'
 
 export default function  Home(props){
     
@@ -14,19 +15,21 @@ export default function  Home(props){
     }, [server_data])
 
     return(
-        <div>
+        <div className='background'>
+            
             <Nav/>
-            <img src = "https://coolbackgrounds.io/images/backgrounds/index/gulf-dec0ccde.svg"/>
 
             <div className='Analytics'>
                 <h1>Analytics</h1>
                 <Analytics/>
+
+                <div className='Suggestions'> 
+                    <h1>Suggestions</h1>
+                    <Suggestions data = {data}/>
+                </div>
             </div>
             
-           <div className='Suggestions'> 
-               <h1>Suggestions</h1>
-               <Suggestions data = {data}/>
-           </div>
+            
  
         </div>
     );

@@ -13,28 +13,23 @@
     align-items: center;
     justify-content: center;
     font-size: 3rem;
+
     
 }
-
-img {
-    border: 100%;
-    width: 100%;
-    height: auto;
+.background{
+    background-image: url("https://coolbackgrounds.io/images/backgrounds/index/gulf-dec0ccde.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
 }
 
+
 .Analytics{
-    position: absolute;
-    top:10px;
+    position: relative;
+    top:100px;
     left:210px;
 }
 
 .Suggestions{
-    padding-left: 210px;
-    padding-bottom: 100px;
-}
-
-.Workout{
-    position: absolute;
-    top:10px;
-    left:210px;
+    padding-top: 100px;
 }

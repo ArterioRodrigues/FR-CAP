@@ -6,6 +6,7 @@ import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { sDataView, SidebarData } from './SideBar';
 import {IconContext} from "react-icons" 
+import Searchbar from '../Search/Searchbar';
 
 export default function  Nav(props){    
     const [sidebar, setSideBar] = useState(false);
@@ -14,11 +15,13 @@ export default function  Nav(props){
     return (
     <div>
        
-            <div className='navBar'> 
-                <Link to = "#" className='menu-bar'>
-                    <AiIcons.AiOutlineMenu className='sidebar-icons-1' onClick={showSideBar}/>
-                </Link>
-            </div>
+        <div className='navBar'> 
+            <Link to = "#" className='menu-bar'>
+                <AiIcons.AiOutlineMenu className='sidebar-icons-1' onClick={showSideBar}/>
+            </Link>
+        </div>
+        <Searchbar/>
+
         <IconContext.Provider value={{color: '#f5f5f5'}}>
             <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
                 <ul className='nav-menu-items'>
